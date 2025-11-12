@@ -102,14 +102,14 @@ import { useEffect, useMemo, useState } from "react";
                                 <div className="flex items-center gap-3">
                                     <p className="font-orbitron uppercase tracking-wide text-[rgb(50,255,52)]">{username}</p>
                                     <button
-                                        className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer border border-white px-3 py-1 rounded"
+                                        className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer border border-white px-3 py-1 rounded hover:bg-transparent hover:text-[rgb(50,255,52)] hover:border-[rgb(50,255,52)]"
                                         onClick={handleDisconnect}
                                     >
                                         Disconnect
                                     </button>
                                 </div>
                             ) : (
-                                <button className="text-[rgb(50,255,52)] text-base font-medium font-orbitron tracking-wide uppercase hover:cursor-pointer" onClick={handleConnect}>CONNECT WALLET</button>
+                                <button className="text-[rgb(50,255,52)] text-base font-medium font-orbitron tracking-wide uppercase hover:cursor-pointer hover:bg-transparent hover:text-[rgb(50,255,52)] hover:border-[rgb(50,255,52)]" onClick={handleConnect}>CONNECT WALLET</button>
                             )
                         }
                     </div>
