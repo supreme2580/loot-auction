@@ -94,13 +94,13 @@ import { useEffect, useMemo, useState } from "react";
             <div className="w-full h-14 bg-black flex flex-row items-center justify-center">
                 <div className="w-full flex flex-row items-center justify-between p-3.5">
                     <div>
-                        <Image src="/logo.png" alt="logo" width={50} height={50} />
+                        <Image src="/logo.png" alt="logo" width={50} height={50} draggable={false} />
                     </div>
                     <div>
                         {
                             username ? (
                                 <div className="flex items-center gap-3">
-                                    <p className="text-white font-orbitron uppercase tracking-wide">{username}</p>
+                                    <p className="font-orbitron uppercase tracking-wide text-[rgb(50,255,52)]">{username}</p>
                                     <button
                                         className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer border border-white px-3 py-1 rounded"
                                         onClick={handleDisconnect}
@@ -109,7 +109,7 @@ import { useEffect, useMemo, useState } from "react";
                                     </button>
                                 </div>
                             ) : (
-                                <button className="text-white text-base font-medium font-orbitron tracking-wide uppercase hover:cursor-pointer" onClick={handleConnect}>CONNECT WALLET</button>
+                                <button className="text-[rgb(50,255,52)] text-base font-medium font-orbitron tracking-wide uppercase hover:cursor-pointer" onClick={handleConnect}>CONNECT WALLET</button>
                             )
                         }
                     </div>
