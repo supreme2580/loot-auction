@@ -1,13 +1,67 @@
-export default function Pagination(){
-    return(
-        <div className="flex flex-row items-center justify-center space-x-4">
-            <button className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:border-[rgb(50,255,52)] border border-white px-3 py-1 rounded hover:bg-transparent hover:text-[rgb(50,255,52)]">Previous</button>
-            <p className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:text-[rgb(50,255,52)]">1</p>
-            <p className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:text-[rgb(50,255,52)]">2</p>
-            <p className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:text-[rgb(50,255,52)]">3</p>
-            <p className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:text-[rgb(50,255,52)]">4</p>
-            <p className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:text-[rgb(50,255,52)]">5</p>
-            <button className="text-white text-sm font-orbitron tracking-wide uppercase hover:cursor-pointer hover:border-[rgb(50,255,52)] border border-white px-3 py-1 rounded hover:bg-transparent hover:text-[rgb(50,255,52)]">Next</button>
-        </div>
-    )
+type PaginationProps = {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+};
+
+export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
+    const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+    const handlePrevious = () => {
+        if (currentPage > 1) {
+            onPageChange(currentPage - 1);
+        }
+    };
+
+    const handleNext = () => {
+        if (currentPage < totalPages) {
+            onPageChange(currentPage + 1);
+        }
+    };
+
+    return (
+        <nav className="flex items-center gap-3 text-sm font-orbitron uppercase tracking-wide text-white">
+            <button
+                type="button"
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+                className={`rounded border px-3 py-1 transition ${
+                    currentPage === 1
+                        ? "cursor-not-allowed border-white/30 text-white/30"
+                        : "border-white hover:cursor-pointer hover:border-[rgb(50,255,52)] hover:text-[rgb(50,255,52)]"
+                }`}
+            >
+                Previous
+            </button>
+            <ul className="flex items-center gap-2">
+                {pages.map((page) => (
+                    <li key={page}>
+                        <button
+                            type="button"
+                            onClick={() => onPageChange(page)}
+                            className={`rounded px-2 py-1 transition ${
+                                page === currentPage
+                                    ? "border border-[rgb(50,255,52)] bg-[rgb(50,255,52)]/10 text-[rgb(50,255,52)]"
+                                    : "border border-transparent hover:cursor-pointer hover:border-[rgb(50,255,52)] hover:text-[rgb(50,255,52)]"
+                            }`}
+                        >
+                            {page}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            <button
+                type="button"
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+                className={`rounded border px-3 py-1 transition ${
+                    currentPage === totalPages
+                        ? "cursor-not-allowed border-white/30 text-white/30"
+                        : "border-white hover:cursor-pointer hover:border-[rgb(50,255,52)] hover:text-[rgb(50,255,52)]"
+                }`}
+            >
+                Next
+            </button>
+        </nav>
+    );
 }
