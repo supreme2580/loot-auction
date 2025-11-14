@@ -69,6 +69,7 @@ export default function Auction() {
     const pageSize = 3;
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedMonsterIds, setSelectedMonsterIds] = useState<string[]>([]);
+    const [collectionName, setCollectionName] = useState<string>("");
     const [startingPrice, setStartingPrice] = useState<string>("");
 
     const toggleCardSelection = useCallback((monsterId: string) => {
@@ -193,6 +194,23 @@ export default function Auction() {
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2">
                             <label
+                                htmlFor="collection-name"
+                                className="text-[11px] font-orbitron uppercase tracking-[0.16em] text-[rgb(186,255,188)]/70"
+                            >
+                                Collection Name
+                            </label>
+                            <input
+                                id="collection-name"
+                                type="text"
+                                value={collectionName}
+                                onChange={(event) => setCollectionName(event.target.value)}
+                                placeholder="Enter a name for your collection"
+                                className="w-full rounded-xl border border-white/12 bg-black/60 px-4 py-2.5 text-sm font-orbitron uppercase tracking-[0.14em] text-white outline-none transition focus:border-[rgb(50,255,52)] focus:ring-2 focus:ring-[rgb(50,255,52)]/35"
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label
                                 htmlFor="starting-price"
                                 className="text-[11px] font-orbitron uppercase tracking-[0.16em] text-[rgb(186,255,188)]/70"
                             >
@@ -219,9 +237,9 @@ export default function Auction() {
                         <div className="flex flex-wrap gap-2">
                             <button
                                 type="button"
-                                disabled={!hasSelection || !startingPrice}
+                                disabled={!hasSelection || !startingPrice || !collectionName.trim()}
                                 className={`inline-flex items-center justify-center rounded-full px-6 py-2 text-sm font-orbitron uppercase tracking-[0.18em] transition ${
-                                    hasSelection && startingPrice
+                                    hasSelection && startingPrice && collectionName.trim()
                                         ? "border border-[rgb(50,255,52)] bg-[rgb(50,255,52)]/10 text-[rgb(50,255,52)] hover:cursor-pointer hover:bg-[rgb(50,255,52)] hover:text-black"
                                         : "border border-white/12 text-[rgb(186,255,188)]/45"
                                 }`}

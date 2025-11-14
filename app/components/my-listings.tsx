@@ -60,7 +60,7 @@ export default function MyListings() {
                 {listings.map((listing) => (
                     <article
                         key={listing.id}
-                        className="flex w-full flex-col gap-4 rounded-2xl border border-[rgb(50,255,52)]/25 bg-black/40 p-5 shadow-[0_0_25px_rgba(50,255,52,0.12)] transition hover:border-[rgb(50,255,52)]/60 hover:shadow-[0_0_40px_rgba(50,255,52,0.18)] sm:flex-row sm:items-center sm:justify-between"
+                        className="flex w-full flex-col gap-4 rounded-2xl border border-[rgb(50,255,52)]/25 bg-black/40 p-5 shadow-[0_0_25px_rgba(50,255,52,0.12)] transition hover:cursor-pointer hover:border-[rgb(50,255,52)]/60 hover:shadow-[0_0_40px_rgba(50,255,52,0.18)] sm:flex-row sm:items-center sm:justify-between"
                     >
                         <div className="flex w-full flex-1 items-center gap-4">
                             <div className="relative h-16 w-16 overflow-hidden rounded-xl border border-[rgb(50,255,52)]/40 bg-[rgb(50,255,52)]/10">
